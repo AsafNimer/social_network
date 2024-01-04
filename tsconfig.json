@@ -1,19 +1,46 @@
+// {
+//   "compilerOptions": {
+//     "sourceMap": true,
+//     "noImplicitAny": false,
+//     "module": "ESNext",
+//     "target": "es5",
+//     "lib": ["esnext", "dom", "dom.iterable"],
+//     "removeComments": true,
+//     "allowSyntheticDefaultImports": true,
+//     "jsx": "react-jsx",
+//     "allowJs": true,
+//     "baseUrl": "./",
+//     "esModuleInterop": true,
+//     "strict": true,
+//     "skipLibCheck": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "resolveJsonModule": true,
+//     "moduleResolution": "node",
+//     "downlevelIteration": true,
+//     "paths": {
+//       "components/*": ["./client/src/components/*"]
+//     }
+//   },
+//   "include": [
+//     "./client/src",
+//     ".webpack/webpack.config.ts",
+//     "./client/src/declaration.d.ts"
+//   ]
+// }
+
 {
   "compilerOptions": {
     "sourceMap": true,
     "noImplicitAny": false,
-    "module": "ESNext",
+    "module": "commonjs",
     "target": "es5",
     "lib": ["esnext", "dom", "dom.iterable"],
     "removeComments": true,
     "allowSyntheticDefaultImports": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "allowJs": true,
     "baseUrl": "./",
     "esModuleInterop": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "downlevelIteration": true,
@@ -21,5 +48,9 @@
       "components/*": ["./client/src/components/*"]
     }
   },
-  "include": ["./client/src", "./webpack.config.ts", "./declaration.d.ts"]
+  "include": [
+    "./client/src",
+    ".webpack/webpack.config.ts",
+    "./client/src/declaration.d.ts"
+  ]
 }

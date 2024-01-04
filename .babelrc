@@ -7,7 +7,10 @@
                 "runtime": "automatic"
             }
         ],
-        "@babel/preset-typescript"
+        "@babel/preset-typescript",
+        "es2015",
+        "stage-0",
+        "react"
     ],
     "plugins": [
         [

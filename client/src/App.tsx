@@ -1,14 +1,16 @@
-import styles from "./App.module.css";
+// import styles from "./App.module.css";
 // import "./App.css";
-import IMAGE from "../public/react.png"; // from [relative location + file name and extention]
+import React from "react";
+import {Component} from "react";
+import {Registration} from "./features/register/Register";
 
-export const App = () => {
-  const name = "asaf";
-  return (
-    <>
-      <div className="App">
-        <h1>This is my App</h1>
-      </div>
-    </>
-  );
+export const App: React.FC = () => {
+    return (
+        <>
+            <div className="App">
+                <h1>This is my App</h1>
+                <Registration />
+            </div>
+        </>
+    );
 };
