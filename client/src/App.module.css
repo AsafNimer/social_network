@@ -1,1 +1,86 @@
+:root {
+    --font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS";
+    /*--background-input: white;
+    --background: rgb(213, 248, 236);
+    --sub-background: rgb(246, 225, 197);
+    --font: Arial, Helvetica, sans-serif; */
+}
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 15px;
+}
+
+body {
+    position: relative;
+}
+
+#root {
+    height: 100vh;
+    background: whitesmoke;
+}
+
+.App {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 7% 73% 20%;
+}
+
+header {
+    background-color: aquamarine;
+    grid-column-start: 1/2;
+    grid-row: 1/2;
+}
+
+main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    grid-column-start: 1/2;
+    grid-row: 2/3;
+}
+
+footer {
+    grid-column-start: 1/2;
+    grid-row: 3/4;
+    background-color: rgb(238, 233, 233);
+    position: sticky;
+    top: 100%;
+}
+
+.footer_par_container {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.footer_par {
+    padding: 1rem;
+    font-family: var(--font-family);
+    font-size: 0.9rem;
+}
+
+@media only screen and (max-width: 480px) and (orientation: portrait) {
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+}
+
+@media only screen and (min-width: 1201px) and (max-width: 1600px) {
+}
+
+@media only screen and (min-width: 1601px) {
+}

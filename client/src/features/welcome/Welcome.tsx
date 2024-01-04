@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./welcome.module.css";
 import {Registration} from "../register/Register";
-// import { Login } from "../login/Login";
+import {Login} from "../login/Login";
 
 const Welcome: React.FC = () => {
     return (
