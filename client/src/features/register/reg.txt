@@ -1,0 +1,7 @@
+register_container: string;
+    form_container: string;
+    register_form: string;
+    register_input: string;
+    btn_container: string;
+    register_btn: string;
+    already_par: string;

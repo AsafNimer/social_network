@@ -76,10 +76,10 @@ class Registration extends Component {
                             Get Started
                         </button>
                     </div>
+                    <p className={styles.already_par}>
+                        Already a member? <Link to="/login">Login</Link>
+                    </p>
                 </div>
-                <p className={styles.already_par}>
-                    Already a member? <Link to="/login">Login</Link>
-                </p>
             </div>
         );
     }

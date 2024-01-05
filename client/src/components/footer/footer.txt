@@ -1,0 +1,3 @@
+footer:string;
+footer_par_container:string;
+footer_par:string;

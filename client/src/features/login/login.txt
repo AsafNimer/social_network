@@ -1,0 +1,8 @@
+ login_container: string;
+    login_form_container: string;
+    login_form: string;
+    login_input: string;
+    login_btn_container: string;
+    login_btn: string;
+    par_container: string;
+    forgot_pass_par: string;
