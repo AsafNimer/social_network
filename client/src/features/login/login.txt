@@ -6,3 +6,4 @@
     login_btn: string;
     par_container: string;
     forgot_pass_par: string;
+    sign_up_par:string;

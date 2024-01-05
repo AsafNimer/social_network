@@ -63,7 +63,7 @@ class Login extends Component {
                 </div>
                 <div className={styles.par_container}>
                     <p className={styles.forgot_pass_par}>
-                        Forgot password? Not <Link to="/registration">registered</Link> yet?
+                        <Link to="/reset">Forgot password?</Link> | <Link to="/">Sign-Up</Link>
                     </p>
                 </div>
             </div>
