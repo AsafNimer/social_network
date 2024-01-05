@@ -10,7 +10,8 @@ import {
     createBrowserRouter,
     RouterProvider,
     createRoutesFromElements,
-    Route
+    Route,
+    Navigate
 } from "react-router-dom";
 
 const router = createBrowserRouter(

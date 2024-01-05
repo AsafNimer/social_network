@@ -60,11 +60,11 @@ class Login extends Component {
                             Login
                         </button>
                     </div>
-                </div>
-                <div className={styles.par_container}>
-                    <p className={styles.forgot_pass_par}>
-                        <Link to="/reset">Forgot password?</Link> | <Link to="/">Sign-Up</Link>
-                    </p>
+                    <div className={styles.par_container}>
+                        <p className={styles.forgot_pass_par}>
+                            <Link to="/reset">Forgot password?</Link>
+                        </p>
+                    </div>
                 </div>
             </div>
         );
