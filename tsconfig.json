@@ -3,7 +3,9 @@
         "sourceMap": true,
         "noImplicitAny": false,
         "module": "commonjs",
-        "target": "es5",
+        "target": "es6",
+        "outDir": "./dist",
+        "rootDir": "./client/src",
         "lib": ["esnext", "dom", "dom.iterable"],
         "removeComments": true,
         "allowSyntheticDefaultImports": true,
@@ -18,5 +20,11 @@
             "components/*": ["./client/src/components/*"]
         }
     },
-    "include": ["./client/src", ".webpack/webpack.config.ts", "./client/src/declaration.d.ts"]
+    "include": [
+        "./client/src/**/*.ts",
+        "./client/src",
+        ".webpack/webpack.config.ts",
+        "./client/src/declaration.d.ts"
+    ],
+    "exclude": ["node_modules"]
 }

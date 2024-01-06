@@ -1,6 +1,7 @@
+require("dotenv").config({path: __dirname + "/.env"});
 const express = require("express");
 const app = express();
-const pool = require("./db");
+const pool = require("./db.config");
 const bcrypt = require("./bcrypt");
 const cors = require("cors");
 const cookieSession = require("cookie-session");
@@ -57,8 +58,18 @@ if (process.env.NODE_ENV === "production") {
     });
 }
 //<------------------------routes----------------------->
-app.get("/", (req, res) => {
-    res.status(200).send("Hello World from the server!");
-});
+// app.get("/", (req, res) => {
+//     res.status(200).send("Hello World from the server!");
+// });
+
+// app.get("/users", async (req, res) => {
+//     try {
+//         const result = await pool.query("SELECT * FROM users WHERE id=2");
+//         res.status(200).json(result.rows);
+//     } catch (error) {
+//         console.error(error.message);
+//         res.status(500).json({error: "Internal server error"});
+//     }
+// });
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
