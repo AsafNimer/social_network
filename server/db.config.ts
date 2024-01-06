@@ -13,13 +13,3 @@ module.exports = {
     query: (text: any, params) => pool.query(text, params),
     end: () => pool.end()
 };
-
-// const Pool = require("pg").Pool;
-
-// exports.pool = new Pool({
-//   user: process.env.PGUSER || "postgres",
-//   password: process.env.PGPASSWORD || "password",
-//   database: process.env.PGDATABASE || "social",
-//   host: process.env.PGHOST || "localhost",
-//   port: Number(process.env.PGPORT) || 5433,
-// });
