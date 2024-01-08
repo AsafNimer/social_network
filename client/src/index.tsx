@@ -5,6 +5,7 @@ import {Welcome} from "./features/welcome/Welcome";
 import {Registration} from "./features/register/Register";
 import {Login} from "./features/login/Login";
 import {ResetPass} from "./features/resetpass/ResetPass";
+import {Profile} from "./features/profile/Profile";
 import "./App.module.css";
 import {
     createBrowserRouter,
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
             <Route index element={<Registration />} />
             <Route path="/login" element={<Login />} />
             <Route path="/reset" element={<ResetPass />} />
+            <Route path="/profile" element={<Profile />} />
             {/*A route with index attr is a Route that uses the "index" prop instead of
             a "path" prop and is special because it renders on its parent’s path*/}
         </Route>

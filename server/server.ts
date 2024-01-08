@@ -1,17 +1,17 @@
 require("dotenv").config({path: __dirname + "/.env"});
 const express = require("express");
 const app = express();
-const pool = require("./db.config");
+// const pool = require("./db.config");
 const bcrypt = require("./bcrypt");
 const cors = require("cors");
 const cookieSession = require("cookie-session");
 const session = require("express-session");
 const path = require("path");
 const morgan = require("morgan");
-const multer = require("multer");
-const s3 = require("./s3");
-const uidSafe = require("uid-safe");
-const db = require('./db');
+// const multer = require("multer");
+// const s3 = require("./s3");
+// const uidSafe = require("uid-safe");
+const db = require("./db");
 
 const PORT = process.env.PORT || 5000;
 const COOKIE_SECRET = process.env.COOKIE_SECRET || require("../secret.json").COOKIE_SECRET;
@@ -39,13 +39,6 @@ if (process.env.NODE_ENV === "production") {
     });
 }
 //<------------------------cookiesSession----------------------->
-let sessionSecret;
-if (process.env.NODE_ENV === "production") {
-    sessionSecret = process.env.COOKIE_SECRET;
-} else {
-    sessionSecret = require("../secret.json").COOKIE_SECRET;
-}
-
 app.use(
     session({
         secret: COOKIE_SECRET,
@@ -54,6 +47,13 @@ app.use(
         resave: false
     })
 );
+
+let sessionSecret;
+if (process.env.NODE_ENV === "production") {
+    sessionSecret = process.env.COOKIE_SECRET;
+} else {
+    sessionSecret = require("../secret.json").COOKIE_SECRET;
+}
 //<------------------------routes----------------------->
 // app.get("/users", async (req, res) => {
 //     try {
@@ -64,12 +64,32 @@ app.use(
 //         res.status(500).json({error: "Internal server error"});
 //     }
 // });
-
-app.post("registration.json", async(req, res) => {
+app.get("/profile", (req, res) => {
     try {
-      const response = await 
+        res.status(200).json({message: "you got PROFILE page!"});
     } catch (error) {
-      console.error(error.message);
+        console.error(error.message);
+        res.status(500).json({error: "Internal server error"});
+    }
+});
+
+app.post("/registration.json", (req, res) => {
+    try {
+        bcrypt.hash(req.body.password).then((hashedPassword) => {
+            return db
+                .addNewUser(req.body.first, req.body.last, req.body.email, hashedPassword)
+                .then((result) => {
+                    req.session.userId = result.rows[0].userId;
+                    res.json({success: true});
+                    res.status(200).redirect("/profile");
+                });
+        });
+    } catch (err) {
+        console.log("problem server side: ", err.message);
+        res.status(500).json({error: "Internal server error", success: false});
+        res.render("Register", {
+            title: "Registration Form"
+        });
     }
 });
 

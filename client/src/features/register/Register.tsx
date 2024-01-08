@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./register.module.css";
 import {Component} from "react";
-import {RegistrationType} from "../../types/types";
-import {Link} from "react-router-dom";
+import {RegistrationStateType, RegistrationPropsType} from "../../types/types";
+import {Link, redirect} from "react-router-dom";
 
-class Registration extends Component {
-    constructor(props: RegistrationType) {
+class Registration extends Component<RegistrationPropsType, RegistrationStateType> {
+    constructor(props: RegistrationPropsType) {
         super(props);
         this.state = {
             first: "",
@@ -14,11 +14,13 @@ class Registration extends Component {
             password: "",
             error: false
         };
+        this.handleRegistrationSubmit = this.handleRegistrationSubmit.bind(this);
     }
 
     async handleRegistrationSubmit() {
+        const {first, last, email, password, error} = this.state;
         try {
-            const response = await fetch("/", {
+            const response = await fetch("/registration.json", {
                 method: "POST",
                 headers: {
                     Accept: "application/json",
@@ -28,11 +30,15 @@ class Registration extends Component {
             });
             const data = await response.json();
             console.log(data);
+            if (data.success) {
+                redirect("/profile");
+            } else {
+                this.setState({error: true});
+            }
         } catch (err) {
             console.log("Error is:", err);
         }
     }
-
     render() {
         return (
             <div className={styles.register_container}>

@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS users;
 -- DROP TABLE IF EXISTS comments;
 
 CREATE TABLE users (
-    id SERIAL primary key,
+    userId SERIAL primary key,
     first VARCHAR NOT NULL CHECK (first != ''),
     last VARCHAR NOT NULL CHECK (last != ''),
     email VARCHAR NOT NULL CHECK (email != '') UNIQUE,

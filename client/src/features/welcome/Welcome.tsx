@@ -9,8 +9,10 @@ const Welcome: React.FC = () => {
             <div className={styles.welcome_container}>
                 <h1 className={styles.welcome_title}>The Social Experience</h1>
                 <Outlet />
-                {/* <Outlet /> outlet it replacing the child route/s --> 
-                Registration and Login that are nested within Welcome */}
+                {/* <Outlet /> outlet represents the child route (Registration and
+                Login) that are nested within Welcome. Routes are specified in
+                index.tsx and "Outlet" specifies WHERE inside the parant those
+                routes (Registration, Login, ResetPass) should be rendered */}
                 <Footer />
             </div>
         </>
