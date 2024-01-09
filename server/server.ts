@@ -47,13 +47,6 @@ app.use(
         resave: false
     })
 );
-
-let sessionSecret;
-if (process.env.NODE_ENV === "production") {
-    sessionSecret = process.env.COOKIE_SECRET;
-} else {
-    sessionSecret = require("../secret.json").COOKIE_SECRET;
-}
 //<------------------------routes----------------------->
 // app.get("/users", async (req, res) => {
 //     try {

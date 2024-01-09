@@ -34,6 +34,7 @@ class Registration extends Component<RegistrationPropsType, RegistrationStateTyp
                     loggedOrNot(); //should invoke 'fetch' in index.tsx that
                     // will determine to redirect to "Profile" component that is
                     // inside App.tsx
+                    location.reload(); //use either this line or 34, whoever works
                 } else {
                     this.setState({error: true});
                 }
