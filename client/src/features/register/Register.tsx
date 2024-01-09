@@ -3,6 +3,7 @@ import styles from "./register.module.css";
 import {Component} from "react";
 import {RegistrationStateType, RegistrationPropsType} from "../../types/types";
 import {Link, redirect} from "react-router-dom";
+import {loggedOrNot} from "client/src";
 
 class Registration extends Component<RegistrationPropsType, RegistrationStateType> {
     constructor(props: RegistrationPropsType) {
@@ -17,27 +18,29 @@ class Registration extends Component<RegistrationPropsType, RegistrationStateTyp
         this.handleRegistrationSubmit = this.handleRegistrationSubmit.bind(this);
     }
 
-    async handleRegistrationSubmit() {
-        const {first, last, email, password, error} = this.state;
-        try {
-            const response = await fetch("/registration.json", {
-                method: "POST",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(this.state)
+    handleRegistrationSubmit() {
+        fetch("/registration", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(this.state)
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                if (data.success) {
+                    loggedOrNot(); //should invoke 'fetch' in index.tsx that
+                    // will determine to redirect to "Profile" component that is
+                    // inside App.tsx
+                } else {
+                    this.setState({error: true});
+                }
+            })
+            .catch((err) => {
+                console.log("Error is: ", err);
             });
-            const data = await response.json();
-            console.log(data);
-            if (data.success) {
-                redirect("/profile");
-            } else {
-                this.setState({error: true});
-            }
-        } catch (err) {
-            console.log("Error is:", err);
-        }
     }
     render() {
         return (

@@ -64,21 +64,17 @@ if (process.env.NODE_ENV === "production") {
 //         res.status(500).json({error: "Internal server error"});
 //     }
 // });
-app.get("/profile", (req, res) => {
-    try {
-        res.status(200).json({message: "you got PROFILE page!"});
-    } catch (error) {
-        console.error(error.message);
-        res.status(500).json({error: "Internal server error"});
-    }
-});
+app.get("/profile/id", (req, res) => {});
 
-app.post("/registration.json", (req, res) => {
+app.post("/registration", (req, res) => {
     try {
+        console.log("INSIDE TRY!!!");
         bcrypt.hash(req.body.password).then((hashedPassword) => {
+            console.log("PASSWORD HASHED!!!");
             return db
                 .addNewUser(req.body.first, req.body.last, req.body.email, hashedPassword)
                 .then((result) => {
+                    console.log("NEW USER CREATED IN DB!!!");
                     req.session.userId = result.rows[0].userId;
                     res.json({success: true});
                     res.status(200).redirect("/profile");

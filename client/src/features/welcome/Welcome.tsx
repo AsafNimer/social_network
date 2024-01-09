@@ -6,7 +6,7 @@ import {Footer} from "components/footer/Footer";
 const Welcome: React.FC = () => {
     return (
         <>
-            <div className={styles.welcome_container}>
+            <div id={styles.welcome_container}>
                 <h1 className={styles.welcome_title}>The Social Experience</h1>
                 <Outlet />
                 {/* <Outlet /> outlet represents the child route (Registration and

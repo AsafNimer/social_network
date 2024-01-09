@@ -15,41 +15,44 @@ import {
     Navigate
 } from "react-router-dom";
 
-const router = createBrowserRouter(
+const WelcomeRouter = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<Welcome />}>
             <Route index element={<Registration />} />
             <Route path="/login" element={<Login />} />
             <Route path="/reset" element={<ResetPass />} />
-            <Route path="/profile" element={<Profile />} />
             {/*A route with index attr is a Route that uses the "index" prop instead of
             a "path" prop and is special because it renders on its parent’s path*/}
         </Route>
     )
 );
 
-const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-    <React.StrictMode>
-        <RouterProvider router={router} />
-    </React.StrictMode>
+const AppRouter = createBrowserRouter(
+    createRoutesFromElements(
+        <Route path="/" element={<App />}>
+            <Route path="profile" element={<Profile />} />
+        </Route>
+    )
 );
 
-// const loggedOrNot = async () => {
-//     try {
-//         const response = await fetch("/user/id.json");
-//         const data = await response.json();
-//         console.log("DATA: ", data);
+export const loggedOrNot = () => {
+    fetch("/profile/id")
+        .then((response) => response.json())
+        .then((data) => {
+            if (!data.userId) {
+                ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+                    <React.StrictMode>
+                        <RouterProvider router={WelcomeRouter} />
+                    </React.StrictMode>
+                );
+            } else {
+                ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+                    <React.StrictMode>
+                        <RouterProvider router={AppRouter} />
+                    </React.StrictMode>
+                );
+            }
+        });
+};
 
-//         if (!data.userId) {
-//             root.render(
-//                 <React.StrictMode>
-//                     <RouterProvider router={router} />
-//                 </React.StrictMode>
-//             );
-//         } else {
-//             root.render(<App />);
-//         }
-//     } catch (error) {
-//         console.error(error.message);
-//     }
-// };
+loggedOrNot();
