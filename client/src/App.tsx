@@ -8,7 +8,7 @@ export const App: React.FC = () => {
     return (
         <div id={styles.App}>
             <header>
-                <nav>
+                <nav className={styles.nav_container}>
                     <NavBar />
                 </nav>
             </header>

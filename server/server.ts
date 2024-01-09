@@ -9,7 +9,6 @@ const session = require("express-session");
 const path = require("path");
 const morgan = require("morgan");
 // const multer = require("multer");
-// const s3 = require("./s3");
 // const uidSafe = require("uid-safe");
 const db = require("./db");
 
@@ -77,6 +76,7 @@ app.post("/registration", (req, res) => {
         console.log("problem server side: ", err.message);
         res.status(500).json({error: "Internal server error", success: false});
         res.render("Register", {
+            //should it be "Register" or "/" ???
             title: "Registration Form"
         });
     }
